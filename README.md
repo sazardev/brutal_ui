@@ -2,6 +2,7 @@
 
 Brutal UI is a Design System for Flutter, inspired by Brutalist Design principles. It aims to provide a set of components that are simple, functional, and visually striking. The design system is built with Flutter, making it easy to integrate into your Flutter applications.
 
+
 ## Structure
 
 ```markdown
@@ -16,5 +17,15 @@ lib/
   │       ├── button.dart
   │       ├── text.dart
   │       ├── container.dart
-  │       └── input.dart
+  │       ├── input.dart  
+  │       ├── card.dart
+  │       ├── checkbox.dart
+  │       ├── radio.dart
+  │       ├── toggle.dart
+  │       ├── dropdown.dart
+  │       ├── divider.dart
+  │       ├── chip.dart
+  │       ├── layout.dart
+  └── utils/
+      ├── constants.dart
 ```
