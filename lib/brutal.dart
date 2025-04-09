@@ -24,7 +24,4 @@ export 'src/widgets/dropdown.dart';
 export 'src/widgets/layout.dart';
 export 'src/widgets/alert.dart';
 export 'src/widgets/progress.dart';
-export 'src/widgets/accordion.dart';
-export 'src/widgets/toast.dart';
 export 'src/widgets/dialog.dart';
-export 'src/widgets/tabs.dart';
