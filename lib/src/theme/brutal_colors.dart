@@ -81,4 +81,60 @@ class BrutalColors {
     accent: Color(0xFF000000),
     success: Color(0xFF000000),
   );
+
+  // Tema retro (estilo de 8-bit)
+  static const BrutalColors retroColors = BrutalColors(
+    primary: Color(0xFF4A6CD4), // Azul retro
+    secondary: Color(0xFFFFD800), // Amarillo brillante
+    background: Color(0xFF181B29), // Azul oscuro
+    surface: Color(0xFF262A40), // Azul medio
+    text: Color(0xFFFFFFFF), // Blanco
+    textLight: Color(0xFF8E93B4), // Azul claro
+    border: Color(0xFF4A6CD4), // Azul retro
+    error: Color(0xFFD62246), // Rojo retro
+    accent: Color(0xFFFF6B97), // Rosa retro
+    success: Color(0xFF6ECB63), // Verde retro
+  );
+
+  // Tema vaporwave
+  static const BrutalColors vaporwaveColors = BrutalColors(
+    primary: Color(0xFFFF6AD5), // Rosa brillante
+    secondary: Color(0xFF26D9E3), // Turquesa
+    background: Color(0xFF03012F), // Azul oscuro
+    surface: Color(0xFF170B43), // Morado oscuro
+    text: Color(0xFFFFFFFF), // Blanco
+    textLight: Color(0xFFCDBAFA), // Morado claro
+    border: Color(0xFFFF6AD5), // Rosa brillante
+    error: Color(0xFFEE4B2B), // Rojo brillante
+    accent: Color(0xFF8957FD), // Morado
+    success: Color(0xFF26D9E3), // Turquesa
+  );
+
+  // Tema cyberpunk
+  static const BrutalColors cyberpunkColors = BrutalColors(
+    primary: Color(0xFFFFF600), // Amarillo brillante
+    secondary: Color(0xFF00E6CF), // Turquesa brillante
+    background: Color(0xFF0D0221), // Negro azulado
+    surface: Color(0xFF1A1627), // Morado oscuro
+    text: Color(0xFFFFF600), // Amarillo brillante
+    textLight: Color(0xFF9F73FB), // Morado claro
+    border: Color(0xFF00E6CF), // Turquesa brillante
+    error: Color(0xFFFF003C), // Rojo neón
+    accent: Color(0xFFFF00A0), // Rosa neón
+    success: Color(0xFF3DF56C), // Verde neón
+  );
+
+  // Tema construcción (estilo de obra)
+  static const BrutalColors constructionColors = BrutalColors(
+    primary: Color(0xFFFFD100), // Amarillo construcción
+    secondary: Color(0xFF242424), // Casi negro
+    background: Color(0xFFE8E8E8), // Gris claro
+    surface: Color(0xFFFFFFFF), // Blanco
+    text: Color(0xFF000000), // Negro
+    textLight: Color(0xFF6B6B6B), // Gris
+    border: Color(0xFF000000), // Negro
+    error: Color(0xFFEB0000), // Rojo
+    accent: Color(0xFFFFD100), // Amarillo construcción
+    success: Color(0xFF00852F), // Verde oscuro
+  );
 }

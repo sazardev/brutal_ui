@@ -234,4 +234,231 @@ class BrutalTypography {
       decoration: TextDecoration.underline,
     ),
   );
+
+  // Tipografía retro (estilo de 8-bit)
+  static const BrutalTypography retroTypo = BrutalTypography(
+    heading1: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 32.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 1.0,
+    ),
+    heading2: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 26.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 0.5,
+    ),
+    heading3: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 20.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+    ),
+    body: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.2,
+      letterSpacing: 0.5,
+    ),
+    caption: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+    ),
+    button: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+    ),
+    monospace: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+    ),
+    display: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 40.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 2.0,
+    ),
+  );
+
+  // Tipografía vaporwave
+  static const BrutalTypography vaporwaveTypo = BrutalTypography(
+    heading1: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 36.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 3.0,
+    ),
+    heading2: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 28.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 2.0,
+    ),
+    heading3: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 22.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 1.5,
+    ),
+    body: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 18.0,
+      fontWeight: FontWeight.normal,
+      height: 1.2,
+      letterSpacing: 0.8,
+    ),
+    caption: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+      letterSpacing: 1.0,
+      fontStyle: FontStyle.italic,
+    ),
+    button: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 16.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 2.0,
+    ),
+    monospace: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+      letterSpacing: 1.0,
+    ),
+    display: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 50.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: 5.0,
+    ),
+  );
+
+  // Tipografía cyberpunk
+  static const BrutalTypography cyberpunkTypo = BrutalTypography(
+    heading1: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 34.0,
+      fontWeight: FontWeight.w900,
+      height: 0.9,
+      letterSpacing: -0.5,
+    ),
+    heading2: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 26.0,
+      fontWeight: FontWeight.w800,
+      height: 0.9,
+      letterSpacing: -0.3,
+    ),
+    heading3: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 20.0,
+      fontWeight: FontWeight.w700,
+      height: 1.0,
+    ),
+    body: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 16.0,
+      fontWeight: FontWeight.w500,
+      height: 1.3,
+    ),
+    caption: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+    ),
+    button: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 16.0,
+      fontWeight: FontWeight.w900,
+      height: 1.0,
+      letterSpacing: 1.0,
+    ),
+    monospace: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.2,
+    ),
+    display: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 48.0,
+      fontWeight: FontWeight.w900,
+      height: 0.9,
+      letterSpacing: -1.0,
+    ),
+  );
+
+  // Tipografía construcción
+  static const BrutalTypography constructionTypo = BrutalTypography(
+    heading1: TextStyle(
+      fontFamily: 'Impact',
+      fontSize: 32.0,
+      fontWeight: FontWeight.bold,
+      height: 1.1,
+      letterSpacing: 0.0,
+    ),
+    heading2: TextStyle(
+      fontFamily: 'Impact',
+      fontSize: 26.0,
+      fontWeight: FontWeight.bold,
+      height: 1.1,
+      letterSpacing: 0.0,
+    ),
+    heading3: TextStyle(
+      fontFamily: 'Impact',
+      fontSize: 20.0,
+      fontWeight: FontWeight.bold,
+      height: 1.1,
+    ),
+    body: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.4,
+    ),
+    caption: TextStyle(
+      fontFamily: 'Arial',
+      fontSize: 14.0,
+      fontWeight: FontWeight.normal,
+      height: 1.2,
+    ),
+    button: TextStyle(
+      fontFamily: 'Impact',
+      fontSize: 16.0,
+      fontWeight: FontWeight.normal,
+      height: 1.0,
+    ),
+    monospace: TextStyle(
+      fontFamily: 'Courier New',
+      fontSize: 16.0,
+      height: 1.4,
+    ),
+    display: TextStyle(
+      fontFamily: 'Impact',
+      fontSize: 44.0,
+      fontWeight: FontWeight.bold,
+      height: 1.0,
+      letterSpacing: -0.5,
+    ),
+  );
 }

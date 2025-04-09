@@ -5,17 +5,37 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // Tema actual que podemos cambiar
+  BrutalTheme _currentTheme = BrutalTheme.darkTheme;
+
+  // Método para cambiar de tema
+  void _changeTheme(BrutalTheme newTheme) {
+    setState(() {
+      _currentTheme = newTheme;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BrutalApp(theme: BrutalTheme.darkTheme, child: const ShowcasePage());
+    return BrutalApp(
+      theme: _currentTheme,
+      child: ShowcasePage(onThemeChanged: _changeTheme),
+    );
   }
 }
 
 class ShowcasePage extends StatefulWidget {
-  const ShowcasePage({super.key});
+  final Function(BrutalTheme) onThemeChanged;
+
+  const ShowcasePage({super.key, required this.onThemeChanged});
 
   @override
   State<ShowcasePage> createState() => _ShowcasePageState();
@@ -61,7 +81,164 @@ class _ShowcasePageState extends State<ShowcasePage> {
                   BrutalText('Un sistema de diseño brutalista para Flutter'),
                   SizedBox(height: theme.spacing * 3),
 
-                  // Sección Layouts (NUEVA)
+                  // Sección Temas
+                  _buildSection('Temas', [
+                    BrutalText('Selecciona un tema:'),
+                    SizedBox(height: theme.spacing),
+                    BrutalWrapper(
+                      spacing: theme.spacing,
+                      runSpacing: theme.spacing,
+                      children: [
+                        BrutalButton(
+                          text: 'Default',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.defaultTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.defaultTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.defaultTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Dark',
+                          onPressed:
+                              () =>
+                                  widget.onThemeChanged(BrutalTheme.darkTheme),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.darkTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.darkTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Neón',
+                          onPressed:
+                              () =>
+                                  widget.onThemeChanged(BrutalTheme.neonTheme),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.neonTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.neonTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Minimal',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.minimalTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.minimalTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.minimalTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Typewriter',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.typewriterTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(
+                                    theme,
+                                    BrutalTheme.typewriterTheme,
+                                  )
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(
+                                    theme,
+                                    BrutalTheme.typewriterTheme,
+                                  )
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        // Nuevos botones para los temas adicionales
+                        BrutalButton(
+                          text: 'Retro',
+                          onPressed:
+                              () =>
+                                  widget.onThemeChanged(BrutalTheme.retroTheme),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.retroTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.retroTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Vaporwave',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.vaporwaveTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.vaporwaveTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.vaporwaveTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Cyberpunk',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.cyberpunkTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(theme, BrutalTheme.cyberpunkTheme)
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(theme, BrutalTheme.cyberpunkTheme)
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                        BrutalButton(
+                          text: 'Construcción',
+                          onPressed:
+                              () => widget.onThemeChanged(
+                                BrutalTheme.constructionTheme,
+                              ),
+                          backgroundColor:
+                              _isCurrentTheme(
+                                    theme,
+                                    BrutalTheme.constructionTheme,
+                                  )
+                                  ? theme.colors.primary
+                                  : null,
+                          textColor:
+                              _isCurrentTheme(
+                                    theme,
+                                    BrutalTheme.constructionTheme,
+                                  )
+                                  ? theme.colors.background
+                                  : null,
+                        ),
+                      ],
+                    ),
+                  ]),
+
+                  // Sección Layouts
                   _buildSection('Layouts Brutales', [
                     // BrutalRow
                     BrutalText.heading3('BrutalRow'),
@@ -445,6 +622,37 @@ class _ShowcasePageState extends State<ShowcasePage> {
         ),
       ),
     );
+  }
+
+  // Helper para determinar si un tema es el actualmente seleccionado
+  bool _isCurrentTheme(BrutalTheme current, BrutalTheme compare) {
+    // Comparación mejorada para todos los temas
+    if (current == BrutalTheme.defaultTheme &&
+        compare == BrutalTheme.defaultTheme)
+      return true;
+    if (current == BrutalTheme.darkTheme && compare == BrutalTheme.darkTheme)
+      return true;
+    if (current == BrutalTheme.neonTheme && compare == BrutalTheme.neonTheme)
+      return true;
+    if (current == BrutalTheme.minimalTheme &&
+        compare == BrutalTheme.minimalTheme)
+      return true;
+    if (current == BrutalTheme.typewriterTheme &&
+        compare == BrutalTheme.typewriterTheme)
+      return true;
+    // Comparación para los nuevos temas
+    if (current == BrutalTheme.retroTheme && compare == BrutalTheme.retroTheme)
+      return true;
+    if (current == BrutalTheme.vaporwaveTheme &&
+        compare == BrutalTheme.vaporwaveTheme)
+      return true;
+    if (current == BrutalTheme.cyberpunkTheme &&
+        compare == BrutalTheme.cyberpunkTheme)
+      return true;
+    if (current == BrutalTheme.constructionTheme &&
+        compare == BrutalTheme.constructionTheme)
+      return true;
+    return false;
   }
 
   Widget _buildSection(String title, List<Widget> children) {

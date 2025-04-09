@@ -71,6 +71,50 @@ class BrutalTheme {
     variant: BrutalVariant.typewriter,
   );
 
+  // Nuevo tema retro (8-bit)
+  static const BrutalTheme retroTheme = BrutalTheme(
+    colors: BrutalColors.retroColors,
+    typography: BrutalTypography.retroTypo,
+    borderWidth: 3.0,
+    shadow: BrutalShadow.regular(),
+    borderStyle: BrutalBorderStyle.pixel,
+    intensity: BrutalIntensity.bold,
+    variant: BrutalVariant.pixel,
+  );
+
+  // Nuevo tema vaporwave
+  static const BrutalTheme vaporwaveTheme = BrutalTheme(
+    colors: BrutalColors.vaporwaveColors,
+    typography: BrutalTypography.vaporwaveTypo,
+    borderWidth: 2.0,
+    shadow: BrutalShadow.neon(),
+    borderStyle: BrutalBorderStyle.solid,
+    intensity: BrutalIntensity.bold,
+    variant: BrutalVariant.neon,
+  );
+
+  // Nuevo tema cyberpunk
+  static const BrutalTheme cyberpunkTheme = BrutalTheme(
+    colors: BrutalColors.cyberpunkColors,
+    typography: BrutalTypography.cyberpunkTypo,
+    borderWidth: 3.0,
+    shadow: BrutalShadow.neon(),
+    borderStyle: BrutalBorderStyle.rough,
+    intensity: BrutalIntensity.extreme,
+    variant: BrutalVariant.glitch,
+  );
+
+  // Nuevo tema construcción
+  static const BrutalTheme constructionTheme = BrutalTheme(
+    colors: BrutalColors.constructionColors,
+    typography: BrutalTypography.constructionTypo,
+    borderWidth: 4.0,
+    shadow: BrutalShadow.intense(),
+    borderStyle: BrutalBorderStyle.thickAndThin,
+    intensity: BrutalIntensity.extreme,
+    variant: BrutalVariant.standard,
+  );
+
   static BrutalTheme of(BuildContext context) {
     final provider =
         context.dependOnInheritedWidgetOfExactType<BrutalThemeProvider>();
@@ -140,6 +184,7 @@ enum BrutalBorderStyle {
   rough, // Borde irregular (simula dibujado a mano)
   double, // Borde doble
   thickAndThin, // Borde con grosor variable
+  pixel, // Borde pixelado (estilo 8-bit)
 }
 
 /// Intensidad visual de los elementos brutalistas
