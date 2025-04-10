@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import '../theme/brutal_theme.dart';
+import '../utils/constants.dart';
 import 'text.dart';
 
 /// A brutalist tab bar and tab view implementation
@@ -117,7 +118,9 @@ class BrutalTabBar extends StatelessWidget {
                       ? Border(
                         bottom: BorderSide(
                           color:
-                              isSelected ? selectedBgColor : Colors.transparent,
+                              isSelected
+                                  ? selectedBgColor
+                                  : BrutalConstants.transparent,
                           width: theme.borderWidth * 2,
                         ),
                       )
@@ -340,13 +343,13 @@ class _BrutalTabsState extends State<BrutalTabs> {
           variant: widget.variant,
         ),
         BrutalTabView(
-          children: widget.tabs.map((tab) => tab.content).toList(),
           selectedIndex: _selectedIndex,
           hasBorder: widget.hasBorder,
           backgroundColor: widget.backgroundColor,
           borderColor: widget.borderColor,
           padding: widget.contentPadding,
           isGlitched: widget.isGlitched,
+          children: widget.tabs.map((tab) => tab.content).toList(),
         ),
       ],
     );
@@ -363,8 +366,3 @@ class BrutalTabItem {
 
 /// Tab variants
 enum BrutalTabVariant { default_, minimal, broken }
-
-/// A utility class that contains color constants
-class Colors {
-  static const transparent = Color(0x00000000);
-}
