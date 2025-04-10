@@ -118,6 +118,10 @@ class BrutalDialog extends StatelessWidget {
     return showGeneralDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
+      barrierLabel:
+          barrierDismissible
+              ? 'Dismiss dialog'
+              : null, // Añadido el barrierLabel requerido
       barrierColor: barrierColor,
       pageBuilder: (context, _, __) => dialog,
       transitionBuilder: (context, animation, secondaryAnimation, child) {
