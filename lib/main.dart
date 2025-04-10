@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'brutal.dart';
 
 void main() {
@@ -13,10 +13,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // Tema actual que podemos cambiar
+  // Current theme that can be changed
   BrutalTheme _currentTheme = BrutalTheme.darkTheme;
 
-  // Método para cambiar de tema
+  // Method to change theme
   void _changeTheme(BrutalTheme newTheme) {
     setState(() {
       _currentTheme = newTheme;
@@ -46,97 +46,99 @@ class ShowcasePage extends StatefulWidget {
 class _ShowcasePageState extends State<ShowcasePage> {
   final _textController = TextEditingController();
   final List<String> _listItems = [
-    'Elemento brutalista 1',
-    'Elemento brutalista 2',
-    'Elemento brutalista 3',
-    'Elemento brutalista 4',
-    'Elemento brutalista 5',
+    'Brutalist element 1',
+    'Brutalist element 2',
+    'Brutalist element 3',
+    'Brutalist element 4',
+    'Brutalist element 5',
   ];
 
-  // Controladores para demostración de componentes interactivos
+  // Controllers for interactive component demos
   bool _checkboxValue1 = true;
   bool _checkboxValue2 = false;
   bool _toggleValue = true;
-  String _radioValue = 'opcion1';
+  String _radioValue = 'option1';
+  // Variable to control the selected minimal tab
+  int _minimalTabIndex = 0;
 
-  // Mostrar un Toast
+  // Show a Toast
   void _showToast(BuildContext context, BrutalToastVariant variant) {
-    String mensaje = '';
+    String message = '';
     Widget? iconWidget;
 
     switch (variant) {
       case BrutalToastVariant.success:
-        mensaje = 'Operación exitosa';
-        iconWidget = const Icon(IconData(0xe876, fontFamily: 'MaterialIcons'));
-        BrutalToasts.showSuccess(context, mensaje, icon: iconWidget);
+        message = 'Operation successful';
+        iconWidget = const Icon(Icons.check_circle);
+        BrutalToasts.showSuccess(context, message, icon: iconWidget);
         break;
       case BrutalToastVariant.error:
-        mensaje = 'Ha ocurrido un error';
-        iconWidget = const Icon(IconData(0xe237, fontFamily: 'MaterialIcons'));
-        BrutalToasts.showError(context, mensaje, icon: iconWidget);
+        message = 'An error occurred';
+        iconWidget = const Icon(Icons.error);
+        BrutalToasts.showError(context, message, icon: iconWidget);
         break;
       case BrutalToastVariant.warning:
-        mensaje = 'Precaución: acción en curso';
-        iconWidget = const Icon(IconData(0xe002, fontFamily: 'MaterialIcons'));
-        BrutalToasts.showWarning(context, mensaje, icon: iconWidget);
+        message = 'Warning: action in progress';
+        iconWidget = const Icon(Icons.warning);
+        BrutalToasts.showWarning(context, message, icon: iconWidget);
         break;
       case BrutalToastVariant.glitch:
-        mensaje = 'Error en el sistema';
-        iconWidget = const Icon(IconData(0xe3e0, fontFamily: 'MaterialIcons'));
+        message = 'System error';
+        iconWidget = const Icon(Icons.build_circle);
         BrutalToasts.show(
           context,
-          mensaje,
+          message,
           icon: iconWidget,
           variant: BrutalToastVariant.glitch,
         );
         break;
       default:
-        mensaje = 'Mensaje informativo';
-        iconWidget = const Icon(IconData(0xe3e0, fontFamily: 'MaterialIcons'));
-        BrutalToasts.show(context, mensaje, icon: iconWidget);
+        message = 'Information message';
+        iconWidget = const Icon(Icons.info);
+        BrutalToasts.show(context, message, icon: iconWidget);
     }
   }
 
-  // Mostrar un Dialog
+  // Show a Dialog
   void _showDialog(BuildContext context, BrutalDialogVariant variant) {
     BrutalDialog dialog;
 
     switch (variant) {
       case BrutalDialogVariant.alert:
         dialog = BrutalDialog.alert(
-          title: 'Alerta',
+          title: 'Alert',
           content: BrutalText(
-            'Esta es una alerta importante que requiere tu atención.',
+            'This is an important alert that requires your attention.',
           ),
           onConfirm: () => Navigator.of(context).pop(),
-          confirmText: 'Entendido',
+          confirmText: 'Understood',
         );
         break;
       case BrutalDialogVariant.broken:
         dialog = BrutalDialog.glitched(
-          title: 'Error del Sistema',
+          title: 'System Error',
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               BrutalText(
-                'Se ha producido un error inesperado en el sistema.',
+                'An unexpected error has occurred in the system.',
                 isGlitched: true,
               ),
               SizedBox(height: 8),
               BrutalText.caption(
-                'Código: 0xBF34A',
+                'Code: 0xBF34A',
                 variant: BrutalTextVariant.subtle,
               ),
             ],
           ),
           actions: [
             BrutalDialogAction(
-              label: 'Reintentar',
+              label: 'Retry',
               onPressed: () => Navigator.of(context).pop(),
               isDefault: true,
             ),
             BrutalDialogAction(
-              label: 'Cancelar',
+              label: 'Cancel',
               onPressed: () => Navigator.of(context).pop(),
             ),
           ],
@@ -144,14 +146,14 @@ class _ShowcasePageState extends State<ShowcasePage> {
         break;
       default:
         dialog = BrutalDialog.confirm(
-          title: 'Confirmación',
+          title: 'Confirmation',
           content: BrutalText(
-            '¿Estás seguro de que deseas continuar con esta acción?',
+            'Are you sure you want to continue with this action?',
           ),
           onConfirm: () => Navigator.of(context).pop(),
           onCancel: () => Navigator.of(context).pop(),
-          confirmText: 'Confirmar',
-          cancelText: 'Cancelar',
+          confirmText: 'Confirm',
+          cancelText: 'Cancel',
         );
     }
 
@@ -183,15 +185,15 @@ class _ShowcasePageState extends State<ShowcasePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Encabezado
+                    // Header
                     BrutalText.display('Brutal UI', isGlitched: true),
                     SizedBox(height: theme.spacing),
-                    BrutalText('Un sistema de diseño brutalista para Flutter'),
+                    BrutalText('A brutalist design system for Flutter'),
                     SizedBox(height: theme.spacing * 3),
 
-                    // Sección Temas
-                    _buildSection('Temas', [
-                      BrutalText('Selecciona un tema:'),
+                    // Themes Section
+                    _buildSection('Themes', [
+                      BrutalText('Select a theme:'),
                       SizedBox(height: theme.spacing),
                       BrutalWrapper(
                         spacing: theme.spacing,
@@ -228,7 +230,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                     : null,
                           ),
                           BrutalButton(
-                            text: 'Neón',
+                            text: 'Neon',
                             onPressed:
                                 () => widget.onThemeChanged(
                                   BrutalTheme.neonTheme,
@@ -278,7 +280,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                     ? theme.colors.background
                                     : null,
                           ),
-                          // Nuevos botones para los temas adicionales
+                          // New buttons for additional themes
                           BrutalButton(
                             text: 'Retro',
                             onPressed:
@@ -337,7 +339,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                     : null,
                           ),
                           BrutalButton(
-                            text: 'Construcción',
+                            text: 'Construction',
                             onPressed:
                                 () => widget.onThemeChanged(
                                   BrutalTheme.constructionTheme,
@@ -361,8 +363,8 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Layouts
-                    _buildSection('Layouts Brutales', [
+                    // Layouts Section
+                    _buildSection('Brutal Layouts', [
                       // BrutalRow
                       BrutalText.heading3('BrutalRow'),
                       SizedBox(height: theme.spacing),
@@ -389,7 +391,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         ],
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Con efecto jagged:'),
+                      BrutalText('With jagged effect:'),
                       SizedBox(height: theme.spacing / 2),
                       BrutalRow(
                         isJagged: true,
@@ -423,27 +425,27 @@ class _ShowcasePageState extends State<ShowcasePage> {
                           hasBorder: true,
                           padding: EdgeInsets.all(theme.spacing),
                           children: [
-                            BrutalText('Elemento 1'),
+                            BrutalText('Item 1'),
                             SizedBox(height: theme.spacing / 2),
-                            BrutalText('Elemento 2'),
+                            BrutalText('Item 2'),
                             SizedBox(height: theme.spacing / 2),
-                            BrutalText('Elemento 3'),
+                            BrutalText('Item 3'),
                           ],
                         ),
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Con efecto glitched:'),
+                      BrutalText('With glitched effect:'),
                       SizedBox(height: theme.spacing / 2),
                       Center(
                         child: BrutalColumn(
                           isGlitched: true,
                           padding: EdgeInsets.all(theme.spacing),
                           children: [
-                            BrutalText('Elemento 1'),
+                            BrutalText('Item 1'),
                             SizedBox(height: theme.spacing / 2),
-                            BrutalText('Elemento 2'),
+                            BrutalText('Item 2'),
                             SizedBox(height: theme.spacing / 2),
-                            BrutalText('Elemento 3'),
+                            BrutalText('Item 3'),
                           ],
                         ),
                       ),
@@ -466,7 +468,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         ),
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Con efecto skewed:'),
+                      BrutalText('With skewed effect:'),
                       SizedBox(height: theme.spacing / 2),
                       BrutalGrid(
                         crossAxisCount: 3,
@@ -501,7 +503,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         ),
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Lista horizontal:'),
+                      BrutalText('Horizontal list:'),
                       SizedBox(height: theme.spacing / 2),
                       SizedBox(
                         height: 80,
@@ -535,7 +537,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                 height: 70,
                                 backgroundColor: theme.colors.primary
                                     .withOpacity(0.2),
-                                child: Center(child: BrutalText('Atrás')),
+                                child: Center(child: BrutalText('Back')),
                               ),
                               Positioned(
                                 top: 15,
@@ -545,7 +547,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                   height: 70,
                                   backgroundColor: theme.colors.primary
                                       .withOpacity(0.5),
-                                  child: Center(child: BrutalText('Medio')),
+                                  child: Center(child: BrutalText('Middle')),
                                 ),
                               ),
                               Positioned(
@@ -556,7 +558,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                   height: 70,
                                   backgroundColor: theme.colors.primary
                                       .withOpacity(0.8),
-                                  child: Center(child: BrutalText('Frente')),
+                                  child: Center(child: BrutalText('Front')),
                                 ),
                               ),
                             ],
@@ -564,7 +566,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         ),
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Con rotación:'),
+                      BrutalText('With rotation:'),
                       SizedBox(height: theme.spacing / 2),
                       SizedBox(
                         height: 120,
@@ -580,7 +582,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                 height: 70,
                                 backgroundColor: theme.colors.primary
                                     .withOpacity(0.2),
-                                child: Center(child: BrutalText('Atrás')),
+                                child: Center(child: BrutalText('Back')),
                               ),
                               Positioned(
                                 top: 15,
@@ -590,7 +592,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                   height: 70,
                                   backgroundColor: theme.colors.primary
                                       .withOpacity(0.5),
-                                  child: Center(child: BrutalText('Medio')),
+                                  child: Center(child: BrutalText('Middle')),
                                 ),
                               ),
                               Positioned(
@@ -601,7 +603,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                   height: 70,
                                   backgroundColor: theme.colors.primary
                                       .withOpacity(0.8),
-                                  child: Center(child: BrutalText('Frente')),
+                                  child: Center(child: BrutalText('Front')),
                                 ),
                               ),
                             ],
@@ -620,16 +622,16 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         spacing: theme.spacing,
                         runSpacing: theme.spacing,
                         children: [
-                          BrutalChip(label: 'Etiqueta 1'),
-                          BrutalChip(label: 'Etiqueta 2'),
-                          BrutalChip(label: 'Etiqueta grande 3'),
-                          BrutalChip(label: 'Etiq 4'),
-                          BrutalChip(label: 'Etiqueta 5'),
-                          BrutalChip(label: 'Etiqueta larga 6'),
+                          BrutalChip(label: 'Tag 1'),
+                          BrutalChip(label: 'Tag 2'),
+                          BrutalChip(label: 'Large tag 3'),
+                          BrutalChip(label: 'Tag 4'),
+                          BrutalChip(label: 'Tag 5'),
+                          BrutalChip(label: 'Long tag 6'),
                         ],
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalText('Con efecto jagged:'),
+                      BrutalText('With jagged effect:'),
                       SizedBox(height: theme.spacing / 2),
                       BrutalWrapper(
                         hasBorder: true,
@@ -638,39 +640,39 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         spacing: theme.spacing,
                         runSpacing: theme.spacing,
                         children: [
-                          BrutalChip(label: 'Etiqueta 1'),
-                          BrutalChip(label: 'Etiqueta 2'),
-                          BrutalChip(label: 'Etiqueta grande 3'),
-                          BrutalChip(label: 'Etiq 4'),
-                          BrutalChip(label: 'Etiqueta 5'),
-                          BrutalChip(label: 'Etiqueta larga 6'),
+                          BrutalChip(label: 'Tag 1'),
+                          BrutalChip(label: 'Tag 2'),
+                          BrutalChip(label: 'Large tag 3'),
+                          BrutalChip(label: 'Tag 4'),
+                          BrutalChip(label: 'Tag 5'),
+                          BrutalChip(label: 'Long tag 6'),
                         ],
                       ),
                     ]),
 
-                    // Sección Tipografía
-                    _buildSection('Tipografía', [
+                    // Typography Section
+                    _buildSection('Typography', [
                       BrutalText.heading1('Heading 1'),
                       BrutalText.heading2('Heading 2'),
                       BrutalText.heading3('Heading 3'),
-                      BrutalText('Texto normal (body)'),
+                      BrutalText('Normal text (body)'),
                       BrutalText.caption('Caption'),
                       BrutalText.mono('Monospace text'),
                       SizedBox(height: theme.spacing),
                       BrutalText(
-                        'Texto marcado',
+                        'Marked text',
                         variant: BrutalTextVariant.marked,
                       ),
-                      BrutalText('Texto glitcheado', isGlitched: true),
+                      BrutalText('Glitched text', isGlitched: true),
                     ]),
 
-                    // Sección Botones
-                    _buildSection('Botones', [
+                    // Buttons Section
+                    _buildSection('Buttons', [
                       Wrap(
                         spacing: theme.spacing,
                         runSpacing: theme.spacing,
                         children: [
-                          BrutalButton(text: 'Estándar', onPressed: () {}),
+                          BrutalButton(text: 'Standard', onPressed: () {}),
                           BrutalButton.primary(
                             text: 'Primary',
                             onPressed: () {},
@@ -688,8 +690,8 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Contenedores
-                    _buildSection('Contenedores', [
+                    // Containers Section
+                    _buildSection('Containers', [
                       Wrap(
                         spacing: theme.spacing * 2,
                         runSpacing: theme.spacing * 2,
@@ -718,26 +720,26 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Inputs
+                    // Inputs Section
                     _buildSection('Inputs', [
                       BrutalInput(
-                        label: 'Input estándar',
+                        label: 'Standard input',
                         controller: _textController,
-                        placeholder: 'Escribe aquí...',
+                        placeholder: 'Type here...',
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalInput.search(placeholder: 'Buscar...'),
+                      BrutalInput.search(placeholder: 'Search...'),
                       SizedBox(height: theme.spacing),
                       BrutalInput.code(
-                        label: 'Input de código',
+                        label: 'Code input',
                         controller: TextEditingController(
                           text: 'console.log("Brutal");',
                         ),
                       ),
                     ]),
 
-                    // Sección Interactivos
-                    _buildSection('Componentes Interactivos', [
+                    // Interactive Components Section
+                    _buildSection('Interactive Components', [
                       // Checkboxes
                       BrutalText.heading3('Checkboxes'),
                       SizedBox(height: theme.spacing),
@@ -782,7 +784,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                             _toggleValue = !value;
                           });
                         },
-                        label: 'Toggle (variante broken)',
+                        label: 'Toggle (broken variant)',
                         variant: BrutalToggleVariant.broken,
                       ),
                       SizedBox(height: theme.spacing * 2),
@@ -791,112 +793,110 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       BrutalText.heading3('Radio Buttons'),
                       SizedBox(height: theme.spacing),
                       BrutalRadio(
-                        value: 'opcion1',
+                        value: 'option1',
                         groupValue: _radioValue,
                         onChanged: (value) {
                           setState(() {
                             _radioValue = value;
                           });
                         },
-                        label: 'Opción 1',
+                        label: 'Option 1',
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalRadio(
-                        value: 'opcion2',
+                        value: 'option2',
                         groupValue: _radioValue,
                         onChanged: (value) {
                           setState(() {
                             _radioValue = value;
                           });
                         },
-                        label: 'Opción 2',
+                        label: 'Option 2',
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalRadio(
-                        value: 'opcion3',
+                        value: 'option3',
                         groupValue: _radioValue,
                         onChanged: (value) {
                           setState(() {
                             _radioValue = value;
                           });
                         },
-                        label: 'Opción 3 (variante square)',
+                        label: 'Option 3 (square variant)',
                         variant: BrutalRadioVariant.square,
                       ),
                     ]),
 
-                    // Sección Acordeones
-                    _buildSection('Acordeones', [
-                      BrutalText.heading3('Acordeones individuales'),
+                    // Accordions Section
+                    _buildSection('Accordions', [
+                      BrutalText.heading3('Individual Accordions'),
                       SizedBox(height: theme.spacing),
                       BrutalAccordion(
-                        title: 'Acordeón estándar',
+                        title: 'Standard Accordion',
                         content: Padding(
                           padding: EdgeInsets.all(theme.spacing),
                           child: BrutalText(
-                            'Este es el contenido del acordeón. Se expande y contrae al hacer clic en el título.',
+                            'This is the accordion content. It expands and collapses when you click on the title.',
                           ),
                         ),
                         initiallyExpanded: true,
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalAccordion.minimal(
-                        title: 'Acordeón minimalista',
+                        title: 'Minimal Accordion',
                         content: Padding(
                           padding: EdgeInsets.all(theme.spacing),
                           child: BrutalText(
-                            'Este acordeón tiene un estilo minimalista sin bordes completos.',
+                            'This accordion has a minimalist style without full borders.',
                           ),
                         ),
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalAccordion.broken(
-                        title: 'Acordeón broken',
+                        title: 'Broken Accordion',
                         content: Padding(
                           padding: EdgeInsets.all(theme.spacing),
                           child: BrutalText(
-                            'Este acordeón tiene un estilo "roto" con rotación y efectos glitch.',
+                            'This accordion has a "broken" style with rotation and glitch effects.',
                             isGlitched: true,
                           ),
                         ),
                       ),
                       SizedBox(height: theme.spacing * 2),
 
-                      BrutalText.heading3('Grupo de acordeones'),
+                      BrutalText.heading3('Accordion Group'),
                       SizedBox(height: theme.spacing),
                       BrutalAccordionGroup(
                         items: [
                           BrutalAccordionItem(
-                            title: 'Sección 1',
+                            title: 'Section 1',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: BrutalText(
-                                'Contenido de la primera sección del grupo de acordeones.',
+                                'Content of the first section of the accordion group.',
                               ),
                             ),
                           ),
                           BrutalAccordionItem(
-                            title: 'Sección 2',
+                            title: 'Section 2',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: BrutalText(
-                                'Contenido de la segunda sección del grupo de acordeones.',
+                                'Content of the second section of the accordion group.',
                               ),
                             ),
                           ),
                           BrutalAccordionItem(
-                            title: 'Sección 3',
+                            title: 'Section 3',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  BrutalText(
-                                    'Contenido con múltiples elementos',
-                                  ),
+                                  BrutalText('Content with multiple elements'),
                                   SizedBox(height: theme.spacing),
                                   BrutalButton(
-                                    text: 'Un botón dentro del acordeón',
+                                    text: 'A button inside the accordion',
                                     onPressed: () {},
                                   ),
                                 ],
@@ -908,9 +908,9 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Tarjetas
-                    _buildSection('Tarjetas', [
-                      BrutalText.heading3('Variantes de tarjetas'),
+                    // Cards Section
+                    _buildSection('Cards', [
+                      BrutalText.heading3('Card Variants'),
                       SizedBox(height: theme.spacing),
                       Wrap(
                         spacing: theme.spacing * 2,
@@ -918,40 +918,40 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         children: [
                           BrutalCard(
                             width: 200,
-                            title: 'Tarjeta estándar',
-                            subtitle: 'Con título y subtítulo',
+                            title: 'Standard Card',
+                            subtitle: 'With title and subtitle',
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: theme.spacing,
                               ),
                               child: BrutalText(
-                                'Contenido de la tarjeta con estilo por defecto.',
+                                'Card content with default style.',
                               ),
                             ),
                           ),
                           BrutalCard.featured(
                             width: 200,
-                            title: 'Tarjeta destacada',
-                            subtitle: 'Con sombra más intensa',
+                            title: 'Featured Card',
+                            subtitle: 'With stronger shadow',
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: theme.spacing,
                               ),
                               child: BrutalText(
-                                'Esta tarjeta tiene un estilo más prominente para contenido destacado.',
+                                'This card has a more prominent style for featured content.',
                               ),
                             ),
                           ),
                           BrutalCard.glitch(
                             width: 200,
-                            title: 'Tarjeta glitch',
-                            subtitle: 'Con efectos de error',
+                            title: 'Glitch Card',
+                            subtitle: 'With error effects',
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: theme.spacing,
                               ),
                               child: BrutalText(
-                                'Esta tarjeta simula errores visuales para un efecto brutalist.',
+                                'This card simulates visual errors for a brutalist effect.',
                                 isGlitched: true,
                               ),
                             ),
@@ -960,9 +960,8 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalCard(
-                        title: 'Tarjeta con acciones',
-                        subtitle:
-                            'Ejemplo de tarjeta con componentes interactivos',
+                        title: 'Card with actions',
+                        subtitle: 'Example card with interactive components',
                         leading: Container(
                           width: 40,
                           height: 40,
@@ -978,7 +977,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                           ),
                         ),
                         trailing: BrutalButton(
-                          text: 'Acción',
+                          text: 'Action',
                           onPressed: () {},
                           variant: BrutalButtonVariant.primary,
                         ),
@@ -987,58 +986,47 @@ class _ShowcasePageState extends State<ShowcasePage> {
                             vertical: theme.spacing,
                           ),
                           child: BrutalText(
-                            'Esta es una tarjeta con un icono de avatar, un título, un subtítulo y un botón de acción.',
+                            'This is a card with an avatar icon, title, subtitle, and an action button.',
                           ),
                         ),
                       ),
                     ]),
 
-                    // Sección Alertas
-                    _buildSection('Alertas y Notificaciones', [
-                      BrutalText.heading3('Alertas'),
+                    // Alerts Section
+                    _buildSection('Alerts and Notifications', [
+                      BrutalText.heading3('Alerts'),
                       SizedBox(height: theme.spacing),
                       BrutalAlert(
-                        title: 'Alerta informativa',
-                        message: 'Este es un mensaje informativo general.',
-                        icon: Icon(
-                          IconData(0xe3e0, fontFamily: 'MaterialIcons'),
-                        ),
+                        title: 'Information alert',
+                        message: 'This is a general information message.',
+                        icon: Icon(Icons.info),
                         variant: BrutalAlertVariant.info,
                         onClose: () {},
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalAlert.success(
-                        title: 'Operación exitosa',
-                        message: 'Los datos se han guardado correctamente.',
-                        icon: Icon(
-                          IconData(0xe876, fontFamily: 'MaterialIcons'),
-                        ),
+                        title: 'Operation successful',
+                        message: 'Data has been saved successfully.',
+                        icon: Icon(Icons.check_circle),
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalAlert.warning(
-                        title: 'Advertencia',
-                        message: 'Este proceso puede tardar varios minutos.',
-                        icon: Icon(
-                          IconData(0xe002, fontFamily: 'MaterialIcons'),
-                        ),
+                        title: 'Warning',
+                        message: 'This process may take several minutes.',
+                        icon: Icon(Icons.warning),
                       ),
                       SizedBox(height: theme.spacing),
                       BrutalAlert.error(
                         title: 'Error',
-                        message: 'No se ha podido conectar al servidor.',
-                        icon: Icon(
-                          IconData(0xe237, fontFamily: 'MaterialIcons'),
-                        ),
+                        message: 'Unable to connect to the server.',
+                        icon: Icon(Icons.error),
                         actions: [
                           BrutalAlertAction(
-                            label: 'Reintentar',
+                            label: 'Retry',
                             onPressed: () {},
                             isPrimary: true,
                           ),
-                          BrutalAlertAction(
-                            label: 'Cancelar',
-                            onPressed: () {},
-                          ),
+                          BrutalAlertAction(label: 'Cancel', onPressed: () {}),
                         ],
                       ),
                       SizedBox(height: theme.spacing * 2),
@@ -1093,14 +1081,14 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BrutalTooltip(
-                            message: 'Este es un tooltip estándar',
+                            message: 'This is a standard tooltip',
                             child: BrutalButton(
                               text: 'Hover',
                               onPressed: () {},
                             ),
                           ),
                           BrutalTooltip(
-                            message: 'Tooltip con efecto glitch',
+                            message: 'Tooltip with glitch effect',
                             isGlitched: true,
                             child: BrutalButton(
                               text: 'Glitch',
@@ -1112,16 +1100,16 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Dialogs
-                    _buildSection('Diálogos', [
-                      BrutalText.heading3('Diálogos modales'),
+                    // Dialogs Section
+                    _buildSection('Dialogs', [
+                      BrutalText.heading3('Modal Dialogs'),
                       SizedBox(height: theme.spacing),
                       Wrap(
                         spacing: theme.spacing,
                         runSpacing: theme.spacing,
                         children: [
                           BrutalButton(
-                            text: 'Diálogo de confirmación',
+                            text: 'Confirmation Dialog',
                             onPressed:
                                 () => _showDialog(
                                   context,
@@ -1129,7 +1117,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                 ),
                           ),
                           BrutalButton(
-                            text: 'Diálogo de alerta',
+                            text: 'Alert Dialog',
                             onPressed:
                                 () => _showDialog(
                                   context,
@@ -1137,7 +1125,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                                 ),
                           ),
                           BrutalButton(
-                            text: 'Diálogo glitched',
+                            text: 'Glitched Dialog',
                             onPressed:
                                 () => _showDialog(
                                   context,
@@ -1149,43 +1137,39 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Pestañas
-                    _buildSection('Pestañas', [
-                      BrutalText.heading3('Pestañas estándar'),
+                    // Tabs Section
+                    _buildSection('Tabs', [
+                      BrutalText.heading3('Standard Tabs'),
                       SizedBox(height: theme.spacing),
                       BrutalTabs(
                         tabs: [
                           BrutalTabItem(
-                            title: 'Pestaña 1',
+                            title: 'Tab 1',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  BrutalText.heading3(
-                                    'Contenido de la pestaña 1',
-                                  ),
+                                  BrutalText.heading3('Content of Tab 1'),
                                   SizedBox(height: theme.spacing),
                                   BrutalText(
-                                    'Este es el contenido de la primera pestaña. Las pestañas son útiles para organizar información relacionada.',
+                                    'This is the content of the first tab. Tabs are useful for organizing related information.',
                                   ),
                                 ],
                               ),
                             ),
                           ),
                           BrutalTabItem(
-                            title: 'Pestaña 2',
+                            title: 'Tab 2',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  BrutalText.heading3(
-                                    'Contenido de la pestaña 2',
-                                  ),
+                                  BrutalText.heading3('Content of Tab 2'),
                                   SizedBox(height: theme.spacing),
                                   BrutalButton(
-                                    text: 'Un botón en la pestaña 2',
+                                    text: 'A button in Tab 2',
                                     onPressed: () {},
                                   ),
                                 ],
@@ -1193,19 +1177,17 @@ class _ShowcasePageState extends State<ShowcasePage> {
                             ),
                           ),
                           BrutalTabItem(
-                            title: 'Pestaña 3',
+                            title: 'Tab 3',
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
-                              child: BrutalText(
-                                'Contenido de la tercera pestaña.',
-                              ),
+                              child: BrutalText('Content of the third tab.'),
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: theme.spacing * 2),
 
-                      BrutalText.heading3('Pestañas minimalistas'),
+                      BrutalText.heading3('Minimal Tabs'),
                       SizedBox(height: theme.spacing),
                       Container(
                         decoration: BoxDecoration(color: theme.colors.surface),
@@ -1213,15 +1195,19 @@ class _ShowcasePageState extends State<ShowcasePage> {
                           children: [
                             BrutalTabBar.minimal(
                               tabs: ['Tab 1', 'Tab 2', 'Tab 3'],
-                              selectedIndex: 0,
-                              onTabSelected: (_) {},
+                              selectedIndex: _minimalTabIndex,
+                              onTabSelected: (index) {
+                                setState(() {
+                                  _minimalTabIndex = index;
+                                });
+                              },
                             ),
                             Container(
                               height: 100,
                               padding: EdgeInsets.all(theme.spacing),
                               child: Center(
                                 child: BrutalText(
-                                  'Contenido de pestañas minimalistas',
+                                  'Content of Tab ${_minimalTabIndex + 1}',
                                 ),
                               ),
                             ),
@@ -1230,7 +1216,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                       SizedBox(height: theme.spacing * 2),
 
-                      BrutalText.heading3('Pestañas con efecto broken'),
+                      BrutalText.heading3('Tabs with broken effect'),
                       SizedBox(height: theme.spacing),
                       BrutalTabs(
                         tabs: [
@@ -1239,7 +1225,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                             content: Padding(
                               padding: EdgeInsets.all(theme.spacing),
                               child: BrutalText(
-                                'Contenido con efecto broken y glitch.',
+                                'Content with broken and glitch effect.',
                                 isGlitched: true,
                               ),
                             ),
@@ -1255,15 +1241,15 @@ class _ShowcasePageState extends State<ShowcasePage> {
                       ),
                     ]),
 
-                    // Sección Badges e Indicadores
-                    _buildSection('Badges e Indicadores', [
+                    // Badges and Indicators Section
+                    _buildSection('Badges and Indicators', [
                       BrutalText.heading3('Badges'),
                       SizedBox(height: theme.spacing),
                       Wrap(
                         spacing: theme.spacing * 2,
                         runSpacing: theme.spacing * 2,
                         children: [
-                          BrutalBadge(label: 'Nuevo', isStandalone: true),
+                          BrutalBadge(label: 'New', isStandalone: true),
                           BrutalBadge(
                             label: '5',
                             isStandalone: true,
@@ -1287,7 +1273,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         children: [
                           BrutalBadge(
                             child: BrutalButton(
-                              text: 'Notificaciones',
+                              text: 'Notifications',
                               onPressed: () {},
                             ),
                             label: '3',
@@ -1298,35 +1284,32 @@ class _ShowcasePageState extends State<ShowcasePage> {
                             child: BrutalContainer(
                               width: 80,
                               height: 80,
-                              child: Center(child: BrutalText('Elemento')),
+                              child: Center(child: BrutalText('Element')),
                             ),
-                            label: 'NUEVO',
+                            label: 'NEW',
                             position: BrutalBadgePosition.topLeft,
                           ),
                         ],
                       ),
                       SizedBox(height: theme.spacing * 2),
 
-                      // Indicadores de progreso
-                      BrutalText.heading3('Barras de progreso'),
+                      // Progress indicators
+                      BrutalText.heading3('Progress Bars'),
                       SizedBox(height: theme.spacing),
                       BrutalProgressBar(
                         value: 0.7,
-                        label: 'Progreso: 70%',
+                        label: 'Progress: 70%',
                         showPercentage: true,
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalProgressBar.minimal(
-                        value: 0.4,
-                        label: 'Minimalista',
-                      ),
+                      BrutalProgressBar.minimal(value: 0.4, label: 'Minimal'),
                       SizedBox(height: theme.spacing),
                       BrutalProgressBar.broken(
                         value: 0.6,
-                        label: 'Estilo broken',
+                        label: 'Broken style',
                       ),
                       SizedBox(height: theme.spacing),
-                      BrutalProgressBar(label: 'Indeterminado'),
+                      BrutalProgressBar(label: 'Indeterminate'),
                       SizedBox(height: theme.spacing * 2),
 
                       BrutalText.heading3('Spinners'),
@@ -1369,7 +1352,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         padding: EdgeInsets.all(theme.spacing),
                         child: Center(
                           child: BrutalLoading(
-                            message: 'Cargando recursos...',
+                            message: 'Loading resources...',
                             spinnerSize: 50,
                             variant: BrutalProgressVariant.broken,
                             isGlitched: true,
@@ -1382,7 +1365,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
                     SizedBox(height: theme.spacing * 3),
                     Center(
                       child: BrutalText.caption(
-                        '© 2025 Brutal UI - Un design system brutalist',
+                        '© 2025 Brutal UI - A brutalist design system',
                         variant: BrutalTextVariant.subtle,
                       ),
                     ),
@@ -1396,9 +1379,9 @@ class _ShowcasePageState extends State<ShowcasePage> {
     );
   }
 
-  // Helper para determinar si un tema es el actualmente seleccionado
+  // Helper to determine if a theme is currently selected
   bool _isCurrentTheme(BrutalTheme current, BrutalTheme compare) {
-    // Comparación mejorada para todos los temas
+    // Improved comparison for all themes
     if (current == BrutalTheme.defaultTheme &&
         compare == BrutalTheme.defaultTheme) {
       return true;
@@ -1417,7 +1400,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
         compare == BrutalTheme.typewriterTheme) {
       return true;
     }
-    // Comparación para los nuevos temas
+    // Comparison for new themes
     if (current == BrutalTheme.retroTheme &&
         compare == BrutalTheme.retroTheme) {
       return true;
@@ -1454,7 +1437,7 @@ class _ShowcasePageState extends State<ShowcasePage> {
   }
 }
 
-/// Widget para proporcionar direccionalidad al texto
+/// Widget to provide text directionality
 class DirectionalityProvider extends StatelessWidget {
   final Widget child;
   final TextDirection textDirection;
