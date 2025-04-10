@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
 import '../theme/brutal_theme.dart';
+import '../utils/constants.dart';
 import 'text.dart';
 
 /// A brutalist accordion widget for expandable content sections
@@ -162,7 +163,7 @@ class _BrutalAccordionState extends State<BrutalAccordion>
         titleBgColor = bgColor;
         break;
       case BrutalAccordionVariant.minimal:
-        titleBgColor = Colors.transparent;
+        titleBgColor = BrutalConstants.transparent;
         break;
       case BrutalAccordionVariant.broken:
         titleBgColor = bgColor;
@@ -195,8 +196,16 @@ class _BrutalAccordionState extends State<BrutalAccordion>
                     angle: _iconRotation.value * math.pi * 2,
                     child: Icon(
                       _isExpanded
-                          ? (widget.collapseIcon ?? Icons.expand_less)
-                          : (widget.expandIcon ?? Icons.expand_more),
+                          ? (widget.collapseIcon ??
+                              const IconData(
+                                0xe5ce,
+                                fontFamily: 'MaterialIcons',
+                              )) // expand_less
+                          : (widget.expandIcon ??
+                              const IconData(
+                                0xe5cf,
+                                fontFamily: 'MaterialIcons',
+                              )), // expand_more
                       color: textColor,
                     ),
                   );
@@ -436,20 +445,3 @@ class BrutalAccordionItem {
 
 /// Accordion variants
 enum BrutalAccordionVariant { default_, minimal, broken }
-
-/// A utility class that contains icon constants
-class Icons {
-  static const IconData expand_more = IconData(
-    0xe5cf,
-    fontFamily: 'MaterialIcons',
-  );
-  static const IconData expand_less = IconData(
-    0xe5ce,
-    fontFamily: 'MaterialIcons',
-  );
-}
-
-/// A utility class that contains color constants
-class Colors {
-  static const transparent = Color(0x00000000);
-}
