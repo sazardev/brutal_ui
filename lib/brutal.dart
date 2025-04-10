@@ -8,6 +8,12 @@ export 'src/theme/brutal_typography.dart';
 // Exportar utilidades
 export 'src/utils/constants.dart';
 
+// Layouts
+export 'src/widgets/scaffold.dart';
+export 'src/widgets/responsive_builder.dart';
+export 'src/widgets/adaptive_panel.dart';
+export 'src/widgets/grid_system.dart';
+
 // Exportar widgets
 export 'src/widgets/accordion.dart';
 export 'src/widgets/alert.dart';
