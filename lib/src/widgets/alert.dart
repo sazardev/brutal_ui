@@ -115,28 +115,23 @@ class BrutalAlert extends StatelessWidget {
     // Determinar colores según la variante
     Color bgColor;
     Color borderColor;
-    Color textColor;
 
     switch (variant) {
       case BrutalAlertVariant.info:
         bgColor = theme.colors.primary.withOpacity(0.1);
         borderColor = theme.colors.primary;
-        textColor = theme.colors.text;
         break;
       case BrutalAlertVariant.success:
         bgColor = theme.colors.success.withOpacity(0.1);
         borderColor = theme.colors.success;
-        textColor = theme.colors.text;
         break;
       case BrutalAlertVariant.error:
         bgColor = theme.colors.error.withOpacity(0.1);
         borderColor = theme.colors.error;
-        textColor = theme.colors.text;
         break;
       case BrutalAlertVariant.warning:
         bgColor = theme.colors.accent.withOpacity(0.1);
         borderColor = theme.colors.accent;
-        textColor = theme.colors.text;
         break;
     }
 
