@@ -175,7 +175,9 @@ class BrutalProgressBar extends StatelessWidget {
                         brutalStyle: BrutalTextStyle.caption,
                         style: TextStyle(
                           color:
-                              value! > 0.5 ? Colors.white : theme.colors.text,
+                              value! > 0.5
+                                  ? Color(0xFFFFFFFF)
+                                  : theme.colors.text,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1024,9 +1026,3 @@ class BrutalLoading extends StatelessWidget {
 
 /// Progress indicator variants
 enum BrutalProgressVariant { default_, minimal, broken, pixel }
-
-/// A utility class that contains color constants
-class Colors {
-  static const transparent = Color(0x00000000);
-  static const white = Color(0xFFFFFFFF);
-}
