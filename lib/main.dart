@@ -27,7 +27,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return BrutalApp(
       theme: _currentTheme,
-      child: ShowcasePage(onThemeChanged: _changeTheme),
+      child: BrutalToastOverlay(
+        child: ShowcasePage(onThemeChanged: _changeTheme),
+      ),
     );
   }
 }
@@ -60,40 +62,39 @@ class _ShowcasePageState extends State<ShowcasePage> {
   // Mostrar un Toast
   void _showToast(BuildContext context, BrutalToastVariant variant) {
     String mensaje = '';
+    Widget? iconWidget;
+
     switch (variant) {
       case BrutalToastVariant.success:
         mensaje = 'Operación exitosa';
+        iconWidget = const Icon(IconData(0xe876, fontFamily: 'MaterialIcons'));
+        BrutalToasts.showSuccess(context, mensaje, icon: iconWidget);
         break;
       case BrutalToastVariant.error:
         mensaje = 'Ha ocurrido un error';
+        iconWidget = const Icon(IconData(0xe237, fontFamily: 'MaterialIcons'));
+        BrutalToasts.showError(context, mensaje, icon: iconWidget);
         break;
       case BrutalToastVariant.warning:
         mensaje = 'Precaución: acción en curso';
+        iconWidget = const Icon(IconData(0xe002, fontFamily: 'MaterialIcons'));
+        BrutalToasts.showWarning(context, mensaje, icon: iconWidget);
         break;
       case BrutalToastVariant.glitch:
         mensaje = 'Error en el sistema';
+        iconWidget = const Icon(IconData(0xe3e0, fontFamily: 'MaterialIcons'));
+        BrutalToasts.show(
+          context,
+          mensaje,
+          icon: iconWidget,
+          variant: BrutalToastVariant.glitch,
+        );
         break;
       default:
         mensaje = 'Mensaje informativo';
+        iconWidget = const Icon(IconData(0xe3e0, fontFamily: 'MaterialIcons'));
+        BrutalToasts.show(context, mensaje, icon: iconWidget);
     }
-
-    BrutalToasts.show(
-      context,
-      mensaje,
-      variant: variant,
-      icon: Icon(
-        variant == BrutalToastVariant.success
-            ? IconData(0xe876, fontFamily: 'MaterialIcons')
-            : variant == BrutalToastVariant.error
-            ? IconData(0xe237, fontFamily: 'MaterialIcons')
-            : variant == BrutalToastVariant.warning
-            ? IconData(0xe002, fontFamily: 'MaterialIcons')
-            : IconData(
-              0xe3e0,
-              fontFamily: 'MaterialIcons',
-            ), // Info icon para default
-      ),
-    );
   }
 
   // Mostrar un Dialog
