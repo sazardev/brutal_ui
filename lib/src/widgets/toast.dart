@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'dart:async';
 import '../theme/brutal_theme.dart';
+import '../utils/constants.dart';
 import 'text.dart';
 
 /// Un mensaje toast con estilo brutalista.
@@ -242,7 +243,7 @@ class _BrutalToastState extends State<BrutalToast>
                         blurRadius: 0,
                       ),
                       BoxShadow(
-                        color: Colors.red.withOpacity(0.3),
+                        color: BrutalConstants.red.withOpacity(0.3),
                         offset: const Offset(-1, 1),
                         blurRadius: 0,
                       ),
@@ -451,11 +452,4 @@ class BrutalToasts {
       icon: icon ?? const Icon(IconData(0xe002, fontFamily: 'MaterialIcons')),
     );
   }
-}
-
-// Helper para Color
-class Colors {
-  static const Color red = Color(0xFFFF0000);
-  static const Color green = Color(0xFF00FF00);
-  static const Color blue = Color(0xFF0000FF);
 }
