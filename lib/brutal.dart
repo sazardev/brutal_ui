@@ -34,3 +34,4 @@ export 'src/widgets/text.dart';
 export 'src/widgets/tabs.dart';
 export 'src/widgets/toast.dart';
 export 'src/widgets/toggle.dart';
+export 'src/widgets/date_picker.dart';
