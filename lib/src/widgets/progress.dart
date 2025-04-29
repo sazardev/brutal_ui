@@ -435,7 +435,7 @@ class _BrutalProgressBarState extends State<BrutalProgressBar>
               ),
             ),
             // Borde dentado animado
-            Container(
+            SizedBox(
               width: pixelSize,
               child: Column(
                 children: List.generate(pixelCountY, (index) {

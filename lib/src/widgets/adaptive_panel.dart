@@ -155,7 +155,6 @@ class BrutalAdaptivePanel extends StatelessWidget {
   }) {
     return BrutalAdaptivePanel(
       key: key,
-      child: Center(child: child),
       config: config,
       backgroundColor: backgroundColor,
       borderColor: borderColor,
@@ -166,6 +165,7 @@ class BrutalAdaptivePanel extends StatelessWidget {
       margin: margin,
       width: width,
       height: height,
+      child: Center(child: child),
     );
   }
 
@@ -183,7 +183,6 @@ class BrutalAdaptivePanel extends StatelessWidget {
   }) {
     return BrutalAdaptivePanel(
       key: key,
-      child: child,
       config: config,
       backgroundColor: backgroundColor,
       borderColor: borderColor,
@@ -194,6 +193,7 @@ class BrutalAdaptivePanel extends StatelessWidget {
       margin: margin,
       width: width,
       height: height,
+      child: child,
     );
   }
 }

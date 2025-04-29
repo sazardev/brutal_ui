@@ -1272,22 +1272,22 @@ class _ShowcasePageState extends State<ShowcasePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BrutalBadge(
+                            label: '3',
+                            position: BrutalBadgePosition.topRight,
+                            variant: BrutalBadgeVariant.error,
                             child: BrutalButton(
                               text: 'Notifications',
                               onPressed: () {},
                             ),
-                            label: '3',
-                            position: BrutalBadgePosition.topRight,
-                            variant: BrutalBadgeVariant.error,
                           ),
                           BrutalBadge(
+                            label: 'NEW',
+                            position: BrutalBadgePosition.topLeft,
                             child: BrutalContainer(
                               width: 80,
                               height: 80,
                               child: Center(child: BrutalText('Element')),
                             ),
-                            label: 'NEW',
-                            position: BrutalBadgePosition.topLeft,
                           ),
                         ],
                       ),

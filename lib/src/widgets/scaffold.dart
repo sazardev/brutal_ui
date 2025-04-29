@@ -304,7 +304,7 @@ class BrutalAppBar extends StatelessWidget {
                 padding: EdgeInsets.only(left: theme.spacing / 2),
                 child: action,
               );
-            }).toList(),
+            }),
           ],
         ],
       ),
